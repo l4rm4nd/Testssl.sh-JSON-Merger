@@ -22,10 +22,10 @@ echo "[+] Remove interrupted scan files"
 grep -l '"scanTime"  : "Scan interrupted"' *.json > /tmp/ignored.log
 find . -type f -exec grep -q '"scanTime"  : "Scan interrupted"' {} \; -delete 
 
-# remove first 13 lines of each json file
+# remove first 1 lines of each json file
 echo "[+] Remove preamble lines"
 sed -i '/\[/,$!d' *.json
-sed -i '1,13d' *.json
+sed -i '1,1d' *.json
 
 # remove last 4 lines of all scan json files
 echo "[+] Remove epilog lines"
