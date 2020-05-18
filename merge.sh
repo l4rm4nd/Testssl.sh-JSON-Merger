@@ -3,6 +3,7 @@
 # (a178f3e 2018-03-18 23:38:23 -- )
 
 TESTSSL_PATH="../testssl2xlsx_v2.py"
+RAND=$(date +%Y%m%d_%H%M%S_SCAN)
 
 echo "[!] Please store all your scan results as pretty json files in the scans directory."
 echo "[!] The script will modify the files and generate a final Excel file :-)"
@@ -12,17 +13,19 @@ echo "[!] Developed by Laurent Vetter"
 echo "... - ... - ... - ... - ... -"
 
 cd scans
+mkdir backup_scans 2> /dev/null
 
 # backup scans
 echo "[+] Backup all scan files"
-cp *.json backup_scans/.
+mkdir backup_scans/$RAND
+cp *.json backup_scans/$RAND/.
 
 # remove interrupted scans
 echo "[+] Remove interrupted scan files"
 grep -l '"scanTime"  : "Scan interrupted"' *.json > /tmp/ignored.log
 find . -type f -exec grep -q '"scanTime"  : "Scan interrupted"' {} \; -delete 
 
-# remove first 1 lines of each json file
+# remove first x lines of each json file, may have to be adjusted for different testssl.sh versions
 echo "[+] Remove preamble lines"
 sed -i '/\[/,$!d' *.json
 sed -i '1,1d' *.json
