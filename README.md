@@ -16,6 +16,7 @@ Note: The **/scan** directory contains example *.json files. Replace them with y
 
 ## Installation:
 `git clone https://github.com/drwetter/testssl.sh.git -b 3.1dev`
+
 `pip -r install requirements.txt`
 
 ## Usage:
