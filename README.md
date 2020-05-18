@@ -40,9 +40,9 @@ Note: You may need to adjust the spread sheet cell's height in order to display 
 You can create a new text file and specify in each line the command to execute for an IP address and port. 
 This should look something like this, e.g. `hosts.txt`:
 ```
-/bin/bash /<your_path_to_testssl>/testssl.sh --json-pretty <ip>:<port>
-/bin/bash /<your_path_to_testssl>/testssl.sh --json-pretty <ip>:<port>
-/bin/bash /<your_path_to_testssl>/testssl.sh --json-pretty <ip>:<port>
+/bin/bash /<your_path_to_testssl>/testssl.sh --json-pretty -U -p -P -h -S -h <ip>:<port>
+/bin/bash /<your_path_to_testssl>/testssl.sh --json-pretty -U -p -P -h -S -h <ip>:<port>
+/bin/bash /<your_path_to_testssl>/testssl.sh --json-pretty -U -p -P -h -S -h <ip>:<port>
 ```
 
 After that, you can use `parallel` to start all the scans simultaneously:
