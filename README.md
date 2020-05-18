@@ -15,6 +15,7 @@ Just use my `merge.sh` script :-)
 Note: The **/scan** directory contains example *.json files. Replace them with your files.
 
 ## Installation:
+`git clone https://github.com/drwetter/testssl.sh.git -b 3.1dev`
 `pip -r install requirements.txt`
 
 ## Usage:
