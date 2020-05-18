@@ -71,14 +71,15 @@ rm *.json
 # generate the Excel file
 echo "[+] Generate final Excel file"
 echo "... - ... - ... - ... - ... -"
-python $TESTSSL_PATH -iJ ../summerized_scans.json
+python $TESTSSL_PATH -iJ ../summerized_scans.json || echo "The error 'ValueError: Expecting property name' means that one of your json files has a missing \"finding\":\"xxx\" property."
+
+# show ignored files
+if [ -s "/tmp/ignored.log" ] 
+then
+	echo ""
+	echo "[!] The following files have been ignored due to interrupted testssl scan:"
+	cat /tmp/ignored.log
+fi
 
 # comment this line to keep the final merged file
 rm ../summerized_scans.json
-
-# info
-echo '\nIf you received an `ValueError: Expecting property name` error, one of your json files has a missing `"finding":"xxx"` property.\nThis is currently still a bug of the Python parser.'
-
-# show ignored files
-echo "\nThe following files have been ignored due to interrupted testssl scan:"
-cat /tmp/ignored.log
