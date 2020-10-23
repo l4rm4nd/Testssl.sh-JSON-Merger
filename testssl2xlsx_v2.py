@@ -344,7 +344,7 @@ def parse_host_protocols(workbook, data):
 
         for protocol in values["protocols"]:
             if protocol["id"] in protocols:
-                if protocol["finding"] == "offered" or protocol["finding"] == "offered (deprecated)":
+                if "offered" in protocol["finding"] and "not" not in protocol["finding"]:
                     d[protocol["id"]] = "YES"
                 else:
                     d[protocol["id"]] = "NO"
