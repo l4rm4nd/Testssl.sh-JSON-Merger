@@ -20,6 +20,7 @@ git clone https://github.com/drwetter/testssl.sh.git -b 3.1dev
 git clone https://github.com/l4rm4nd/Testssl.sh-JSON-Merger
 cd Testssl.sh-JSON-Merger
 python2.7 -m pip -r install requirements.txt
+sudo apt-get install aha parallel
 ````
 
 ## Usage:
@@ -40,12 +41,12 @@ I've added some additional parsing features for the `testssl2xlsx.py` parser. If
 Note: You may need to adjust the spread sheet cell's height in order to display data correctly.
 
 ## Note for scanning several hosts:
-You can create a new text file and specify in each line the command to execute for an IP address and port. 
+You can create a new text file and specify in each line the command to execute for an IP address and port.
 This should look something like this, e.g. `hosts.txt`:
 ```
-/bin/bash /<your_path_to_testssl>/testssl.sh --json-pretty -U -p -P -h -S -h --openssl-timeout=15 <ip>:<port>
-/bin/bash /<your_path_to_testssl>/testssl.sh --json-pretty -U -p -P -h -S -h --openssl-timeout=15 <ip>:<port>
-/bin/bash /<your_path_to_testssl>/testssl.sh --json-pretty -U -p -P -h -S -h --openssl-timeout=15 <ip>:<port>
+/bin/bash /<your_path_to_testssl>/testssl.sh --json-pretty -U -p -P -S -s -E -e -f --openssl-timeout=15 <ip1>:<port> | aha > <ip1>.html
+/bin/bash /<your_path_to_testssl>/testssl.sh --json-pretty -U -p -P -S -s -E -e -f --openssl-timeout=15 <ip2>:<port> | aha > <ip2>.html
+/bin/bash /<your_path_to_testssl>/testssl.sh --json-pretty -U -p -P -S -s -E -e -f --openssl-timeout=15 <ip3>:<port> | aha > <ip3>.html
 ```
 
 After that, you can use `parallel` to start all the scans simultaneously:
